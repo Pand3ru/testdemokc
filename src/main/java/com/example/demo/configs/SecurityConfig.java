@@ -16,8 +16,6 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.
         authorizeHttpRequests(a -> a
-            .requestMatchers("/hello").hasRole("USER")
-            .requestMatchers("/helloAdmin").hasRole("ADMIN")
             .anyRequest().authenticated())
         .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter)));
     return http.build();
